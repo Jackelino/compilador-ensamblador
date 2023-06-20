@@ -183,10 +183,10 @@ public class globoSLR1 {
             z = m[Integer.parseInt(s)][getTerminal(a)];
             //System.out.println("s=[" + s + "]" + " a=[" + a + "]" + "z=[" + z + "]");
             if (z == 3000) { // igual al final del archivo "eof"
-                System.out.println("Codigo Generado:\n");
+                System.out.println("Codigo Generado:");
                 System.out.println(PROG_c[tPROG_c]);
                 creaEscribeArchivo(xArchivo(salida), PROG_c[tPROG_c]);
-                System.out.println("Felicidades, Analisis sintactico correcto.");
+                System.out.println("Analisis sintactico correcto.");
                 System.exit(0);
             } else {
                 if (z > 0) { // si es igual a un shift
@@ -352,22 +352,22 @@ public class globoSLR1 {
                 S_t[++tS_t] = E_t[tE_t--];
                 break;
             case 31:
-                OP_c[++tOP_c] = "\tSMAY\t";
+                OP_c[++tOP_c] = "SMAY\t";
                 break;
             case 32:
-                OP_c[++tOP_c] = "\tSMEN\t";
+                OP_c[++tOP_c] = "SMEN\t";
                 break;
             case 33:
-                OP_c[++tOP_c] = "\tSMAI\t";
+                OP_c[++tOP_c] = "SMAI\t";
                 break;
             case 34:
-                OP_c[++tOP_c] = "\tSMEI\t";
+                OP_c[++tOP_c] = "SMEI\t";
                 break;
             case 35:
-                OP_c[++tOP_c] = "\tSIG\t";
+                OP_c[++tOP_c] = "SIG\t";
                 break;
             case 36:
-                OP_c[++tOP_c] = "\tSDIF\t";
+                OP_c[++tOP_c] = "SDIF\t";
                 break;
         }
     }
