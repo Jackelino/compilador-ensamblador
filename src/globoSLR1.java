@@ -141,8 +141,6 @@ public class globoSLR1 {
     static int tS_v = -1;
 
     static String partIzqEx1;
-    static String partIzqEx2;
-    static String partIzqEx3;
     static String E1;
     static String E2;
     static String PosA = "";
@@ -225,7 +223,6 @@ public class globoSLR1 {
      * @param R
      */
     public static void COD_REDUCE(int R) {
-        //System.out.println("REDUCE:" + R);
         switch (R) {
             case 1:
                 PROG_c[++tPROG_c] = DecV + VarTemps()+"\n\t"+ PRIN_c[tPRIN_c--] + "\n\tVUEL\t0\n\tFIN\n";
@@ -266,9 +263,7 @@ public class globoSLR1 {
                 CICLO_c[++tCICLO_c] = "\n(" + PosA + ")\tMUE\tRC,RC" + EXP_c[tEXP_c--] + PosB + "\n\tSAL\t" + PosC + "\n(" + PosB + ")\tMUE\tRC,RC" + BLQ_c[tBLQ_c--] + "\n\tSAL\t" + PosA + "\n(" + PosC + ")\tMUE\tRC,RC";
                 break;
             case 19:
-                //System.out.println(TipoEsp+ E_t);
                 NoSirve = ChkTipo(TipoEsp, E_t[tE_t--]);
-                //System.out.println(NoSirve);
                 ASIG_c[++tASIG_c] = E_c[tE_c--] + "\n\tMUE\t" + E_v[tE_v--] + "," + VarIzq;
                 break;
             case 20:
@@ -1214,15 +1209,16 @@ public class globoSLR1 {
         }
     }
 
+    /**
+     * Crea y sobre escribe un archivo de salida
+     * @param xFile
+     * @param mensaje
+     * @return
+     */
     public static boolean creaEscribeArchivo(File xFile, String mensaje) {
-        PrintWriter fileOut;
         try {
-            fileOut = new PrintWriter(new FileWriter(xFile, true));
-            if (mensaje == "666") {
-                fileOut.print(mensaje);
-            } else {
-                fileOut.println(mensaje);
-            }
+            PrintWriter fileOut = new PrintWriter(new FileWriter(xFile, true));
+            fileOut.println(mensaje);
             fileOut.close();
             return true;
         } catch (IOException e) {
@@ -1231,12 +1227,19 @@ public class globoSLR1 {
 
     }
 
+    /**
+     * Imprime tabla de simbolos
+     */
     public static void imprimeTablaSimbolo() {
         for (int i = 0; i < variables.size(); i++) {
             System.out.println("Variable: " + variables.get(i) + " Tipo: " + tipos.get(i));
         }
     }
 
+    /**
+     * Genera las variables temporales.
+     * @return
+     */
     public static String VarTemps() {
         String NoInteresa="";
         for(int i=0;i<contVariable;i++)
