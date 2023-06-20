@@ -1,9 +1,15 @@
+// Programa de prueba 2023A
 
-    entero : numero1
-    entero : numero__wee1
-    decimal : numero, numero3
-
+datos
+    decimal: A,C,hola,perro, mientras
+    entero:B
+fin_datos
 
 {
-
+A<- (3.15 + 2.0) * perro/C
+cierto(2>1)haz
+    A<- 4.6
+falso
+    B<- 7890655
+fin_cond
 }

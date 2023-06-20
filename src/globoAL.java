@@ -68,21 +68,16 @@ public class globoAL {
             System.out.println("El archivo: " + entrada + " no existe.");
             System.exit(4);
         }
+        linea = leeArchivo(entrada);
         do {
             ESTADO = 0;
             diag = 0;
             miToken = token();
-            //if (miToken.equals("nosirve")) {
+            if (!miToken.equals("nosirve")) {
                 creaArchivo(xArchivo(salida), miToken);
                 creaArchivo(xArchivo(salida), lex);
                 creaArchivo(xArchivo(salida), Integer.toString(renglon));
-            //
-
-            System.out.println("Este es el token hallado r(" + miToken + ")");
-            System.out.println("Este es el lexema hallado {" + lex + "}");
-            System.out.println("Renglon (" + renglon + ")");
-
-            //pausa();
+            }
             a_i = a_a;
         } while (!fin_archivo);
         creaArchivo(xArchivo(salida), "eof");
@@ -139,7 +134,6 @@ public class globoAL {
                 break;
             case 47:
                 error();
-                break;
         }
         return (diag);
     }
@@ -172,7 +166,7 @@ public class globoAL {
                     a_a--;
                     lex = obtenerLexema();
                     a_i = a_a;
-                    return ("nosirve");
+                    return "nosirve";
                 case 3:
                     c = lee_car();
                     if (esLetra(c)) {
@@ -185,8 +179,10 @@ public class globoAL {
                     c = lee_car();
                     if (esLetra(c)) {
                         ESTADO = 4;
+                        break;
                     } else if (esDigito(c)) {
                         ESTADO = 4;
+                        break;
                     } else if (c == '_') {
                         ESTADO = 5;
                     } else {
@@ -197,8 +193,10 @@ public class globoAL {
                     c = lee_car();
                     if (esLetra(c)) {
                         ESTADO = 4;
+                        break;
                     } else if (esDigito(c)) {
                         ESTADO = 4;
+                        break;
                     } else {
                         ESTADO = diagrama();
                     }
@@ -223,6 +221,7 @@ public class globoAL {
                     c = lee_car();
                     if (esDigito(c)) {
                         ESTADO = 8;
+                        break;
                     } else if (c == '.') {
                         ESTADO = 9;
                     } else {
@@ -289,7 +288,7 @@ public class globoAL {
                     break;
                 case 17:
                     c = lee_car();
-                    if (!esDelimitadorEspacio(c)) {
+                    if (esDelimitadorEspacio(c)) {
                         ESTADO = 17;
                     } else {
                         ESTADO = 18;
@@ -390,7 +389,7 @@ public class globoAL {
                             ESTADO = 42;
                             break;
                         case '!':
-                            ESTADO = 35;
+                            ESTADO = 45;
                             break;
                         default:
                             ESTADO = diagrama();
@@ -409,7 +408,7 @@ public class globoAL {
                             ESTADO = 35;
                             break;
                         default:
-                            ESTADO = diagrama();
+                            ESTADO = 36;
                     }
                     break;
                 case 32:
@@ -450,7 +449,7 @@ public class globoAL {
                             ESTADO = 40;
                             break;
                         default:
-                            ESTADO = diagrama();
+                            ESTADO = 41;
                     }
                     break;
                 case 38:
@@ -565,7 +564,7 @@ public class globoAL {
      * @return
      */
     public static Boolean esDelimitadorEspacio(int x) {
-        return x == 9 || x == 10 || x == 13;
+        return  x != 10 && x != 13 && x != 255;
     }
 
     /**
