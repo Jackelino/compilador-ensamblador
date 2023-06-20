@@ -1,7 +1,7 @@
 // Programa de prueba 2023A
 
 datos
-    decimal: A,C,hola,perro, mientras
+    decimal: A,C,hola,perro
     entero:B
 fin_datos
 
