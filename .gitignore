@@ -58,3 +58,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# archivos de salida
+*.sal
+null
+*.asm
